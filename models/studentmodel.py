@@ -2,7 +2,7 @@
 from typing import Any, Optional
 from datetime import datetime
 from uuid import UUID,uuid4
-from beanie import Document, Indexed, DocumentTemplate
+from beanie import Document, Indexed
 
 class Student(Document):
     user_id: UUID = Indexed(default_factory=uuid4)
