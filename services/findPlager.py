@@ -4,11 +4,17 @@ from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 from collections import Counter
 
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+
+# Define a class to find plagiarism
+
 class FindPlager():
     def __init__(self,text1,text2):
         self.text1 = text1
         self.text2 = text2
-    @staticmethod
+        
     def preprocess(self,text):
         # Tokenize the text
         tokens = word_tokenize(text.lower())
