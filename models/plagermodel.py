@@ -1,17 +1,20 @@
 from typing import Any, Optional,List
 from datetime import datetime
 from uuid import UUID,uuid4
-from beanie import Document, Indexed, DocumentTemplate
+from beanie import Document, Indexed
 
 class Plager(Document):
     id: UUID = Indexed(default_factory=uuid4)
     file_name: Optional[str] = None
     title: Optional[str] = None
     owner: List[str] = []
-    plagarism: Optional[str] = None
+    plagarism_persent: Optional[str] = None
+    plagur: Optional[bool]=False
+    
     created_at: Optional[datetime] = datetime.now()
     updated_at: Optional[datetime] = datetime.now()
     description: Optional[str] = None
+    word_file_link: Optional[str] = None
     
     def __repr__(self):
         return f"<Plagar {self.file_name}>",f"<Plagar {self.title}>",f"<Plagar {self.owner}>",f"<Plagar {self.plagarism}>"
