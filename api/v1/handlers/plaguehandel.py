@@ -1,14 +1,18 @@
-from fastapi import APIRouter,Depends,HTTPException
+from fastapi import APIRouter,Depends,HTTPException,status,Response
 from services import findPlager
 from schemas.plagur import OutPlager,PlagerBase,UpdatePlager
 from models import plagermodel
 from typing import List
-import pymongo
+import pymongo 
+from fastapi.security import HTTPBearer
+
 
 router = APIRouter()
+token_auth = HTTPBearer()
+
 
 @router.get("/",response_model=OutPlager)
-async def get_plague(data:PlagerBase):
+async def get_plague(data:PlagerBase,token: str = Depends(token_auth)):
     pass
 
 @router.get("/all",response_model=List[OutPlager])
