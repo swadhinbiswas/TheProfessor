@@ -2,15 +2,15 @@
 from typing import Any, Optional
 from datetime import datetime
 from uuid import UUID,uuid4
-from beanie import Document, Indexed
+from beanie import Document,Indexed
 
 class Student(Document):
     user_id: UUID = Indexed(default_factory=uuid4)
-    student_id:Indexed(str,unique=True)
+    student_id:Indexed(str,unique=True) # type: ignore
     first_name: Optional[str] = None
     last_name: Optional[str] = None
-    user_name:Indexed(str,unique=True)
-    email:Indexed(str,unique=True)
+    user_name:Indexed(str,unique=True) # type: ignore
+    email:Indexed(str,unique=True) # type: ignore
     hashed_password: str 
     is_active:Optional[bool] = True
     is_superuser: Optional[bool] = False
